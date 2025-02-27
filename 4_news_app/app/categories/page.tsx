@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // هان الشغل كله رياكت طبيعي و في الكلاينت سايد
 "use client";
@@ -57,6 +58,39 @@ const Page = () => {
           </div>
         ))}
       </div>
+=======
+
+import Categories from '@/components/categories/Categories';
+import Link from 'next/link';
+import React from 'react';
+
+const Page = () => {
+  return (
+    <div>
+      <h1>Categories Page</h1>
+      <Categories />
+
+      <ul>
+        <li>
+          <Link href="/news-list/sports/us">US Sports</Link>
+        </li>
+        <li>
+          <Link href="/news-list/sports/gb">UK Sports</Link>
+        </li>
+        <li>
+          <Link href="/news-list/politics/us">US Politics</Link>
+        </li>
+        <li>
+          <Link href="/news-list/politics/gb">UK Politics</Link>
+        </li>
+        <li>
+          <Link href="/news-list/business/us">US Business</Link>
+        </li>
+        <li>
+          <Link href="/news-list/business/gb">UK Business</Link>
+        </li>
+      </ul>
+>>>>>>> fd08e3d1b0b55da4874852fc4d123a4111e41d77
     </div>
   );
 };
