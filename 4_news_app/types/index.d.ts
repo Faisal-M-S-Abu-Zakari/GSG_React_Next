@@ -23,14 +23,10 @@ declare namespace News {
     img: string | null;
     content: string;
   }
-<<<<<<< HEAD
 }
-=======
 
-  export interface ICategory {
-    title: string;
-    subtitle: string;
-    imageURL: string;
-  }
+export interface ICategory {
+  title: string;
+  subtitle: string;
+  imageURL: string;
 }
->>>>>>> fd08e3d1b0b55da4874852fc4d123a4111e41d77
