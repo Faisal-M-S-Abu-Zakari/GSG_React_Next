@@ -1,14 +1,20 @@
 // it should be server side
 "use server";
 
+import { ALLOWED_CATEGORIES } from "@/constants/data";
 import { insertArticle } from "@/services/news.service";
 import { Item_ } from "@/types";
 import { redirect } from "next/navigation";
 import slugify from "slugify";
 import xss from "xss";
 
+<<<<<<< HEAD
 const addArticle = async (formData: FormData) => {
   const title = xss(formData.get("title")?.toString() || "");
+=======
+const addArticle = async (prevState: { errors: string[] }, formData: FormData) => {
+  const title = xss(formData.get('title')?.toString() || '');
+>>>>>>> 9d2b89f773a68799be758ad18dbdc5e9b46b5af2
 
   const newArticle: Item_ = {
     title,
@@ -22,6 +28,31 @@ const addArticle = async (formData: FormData) => {
     slug: slugify(title, { lower: true }),
   };
 
+  const errors: string[] = [];
+
+  if (!newArticle.title.length) {
+    errors.push("The title should not be empty");
+  }
+
+  if (newArticle.title.length > 300) {
+    errors.push("The title should be less than 300 chars length");
+  }
+
+  if (!ALLOWED_CATEGORIES.includes(newArticle.category)) {
+    errors.push("The category you've provided is not allowed!");
+  }
+
+  if (newArticle.date > Date.now()) {
+    errors.push("The date should not be in the future!");
+  }
+
+  if (errors.length) {
+    return {
+      errors
+    }
+  }
+
+  await new Promise((resolve) => setTimeout(resolve, 2000));
   insertArticle(newArticle);
   redirect(`/news/${newArticle.slug}`);
 };
