@@ -1,21 +1,23 @@
-<<<<<<< HEAD
-import { News } from "@/types";
+import { News, Item_ } from "@/types";
 // import { notFound } from "next/navigation";
-=======
-import sql from 'better-sqlite3';
-const db = sql('news.db');
 
-const getNewsByCategory = (category: string): News.Item_[] => {
-  const results = db.prepare('SELECT * FROM articles WHERE category = ?').all(category);
-  return results as News.Item_[];
-}
+import sql from "better-sqlite3";
+const db = sql("news.db");
 
-const getNewsArticle = (slug: string): News.Item_ => {
-  return db.prepare('SELECT * FROM articles WHERE slug = ?').get(slug) as News.Item_;
-}
+const getNewsByCategory = (category: string): Item_[] => {
+  const results = db
+    .prepare("SELECT * FROM articles WHERE category = ?")
+    .all(category);
+  return results as Item_[];
+};
 
-const insertArticle = (newArticle: News.Item_) => {
-  db.prepare(`
+const getNewsArticle = (slug: string): Item_ => {
+  return db.prepare("SELECT * FROM articles WHERE slug = ?").get(slug) as Item_;
+};
+
+const insertArticle = (newArticle: Item_) => {
+  db.prepare(
+    `
     INSERT INTO articles 
     (slug, title, image, summary, content, author, author_email, date, category)
     VALUES (  
@@ -28,10 +30,9 @@ const insertArticle = (newArticle: News.Item_) => {
       @author_email,
       @date,
       @category
-    )`)
-    .run(newArticle);
-}
->>>>>>> abb5633c3132a5dfe3cd643e023177133c1e2bbc
+    )`
+  ).run(newArticle);
+};
 
 const api_key = "pub_701076cdd4cdeaa56df41b17fae04f1ce8350";
 
@@ -68,13 +69,11 @@ const fetchNews = async (category: string, country: string) => {
   );
 };
 
-<<<<<<< HEAD
 export { fetchNews };
-=======
+
 export {
-  fetchNews,
+  // fetchNews,
   getNewsByCategory,
   getNewsArticle,
-  insertArticle
-}
->>>>>>> abb5633c3132a5dfe3cd643e023177133c1e2bbc
+  insertArticle,
+};

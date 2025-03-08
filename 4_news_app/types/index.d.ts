@@ -25,30 +25,27 @@ declare namespace News {
   }
 }
 
-<<<<<<< HEAD
 export interface ICategory {
   title: string;
   subtitle: string;
   imageURL: string;
 }
-=======
-  export interface ICategory {
-    title: string;
-    subtitle: string;
-    imageURL: string;
-  }
 
-  export interface Item_ {
-    id?: string;
-    title: string;
-    slug: string;
-    image: string;
-    summary: string;
-    content: string;
-    author: string;
-    author_email: string;
-    date: number;
-    category: string;
-  }
+export interface ICategory {
+  title: string;
+  subtitle: string;
+  imageURL: string;
 }
->>>>>>> abb5633c3132a5dfe3cd643e023177133c1e2bbc
+
+export interface Item_ {
+  id?: string;
+  title: string;
+  slug: string;
+  image: string;
+  summary: string;
+  content: string;
+  author: string;
+  author_email: string;
+  date: number;
+  category: string;
+}

@@ -2,13 +2,13 @@
   --background: #ffffff;
   --foreground: #171717;
 }
-
+/*
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
   }
-}
+} */
 
 html,
 body {
@@ -17,18 +17,18 @@ body {
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
+  /* color: var(--foreground);
+  background: var(--background); */
   font-family: var(--font-roboto);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
   }
-}
+} */
 
 /* Elements */
 .button {
@@ -41,8 +41,8 @@ body {
   font-size: 16px;
   line-height: 28px;
   font-weight: 400;
-  color: #FFF;
-  background: #71B2ABFF;
+  color: #fff;
+  background: #71b2abff;
   opacity: 1;
   border: none;
   border-radius: 2px;
@@ -51,22 +51,22 @@ body {
 }
 
 .button.outline {
-  color: #71B2ABFF;
-  background: #FFF;
+  color: #71b2abff;
+  background: #fff;
   opacity: 1;
   border-radius: 2px;
-  border: 2px #71B2ABFF solid;
+  border: 2px #71b2abff solid;
   box-sizing: border-box;
 }
 
 .button:hover {
-  color: #FFF;
-  background: #50958EFF;
+  color: #fff;
+  background: #50958eff;
 }
 
 .button:active {
-  color: #FFF;
-  background: #45807BFF;
+  color: #fff;
+  background: #45807bff;
 }
 
 .button:disabled {
