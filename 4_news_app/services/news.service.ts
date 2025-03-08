@@ -1,8 +1,43 @@
+<<<<<<< HEAD
 import { News } from "@/types";
 // import { notFound } from "next/navigation";
+=======
+import sql from 'better-sqlite3';
+const db = sql('news.db');
+
+const getNewsByCategory = (category: string): News.Item_[] => {
+  const results = db.prepare('SELECT * FROM articles WHERE category = ?').all(category);
+  return results as News.Item_[];
+}
+
+const getNewsArticle = (slug: string): News.Item_ => {
+  return db.prepare('SELECT * FROM articles WHERE slug = ?').get(slug) as News.Item_;
+}
+
+const insertArticle = (newArticle: News.Item_) => {
+  db.prepare(`
+    INSERT INTO articles 
+    (slug, title, image, summary, content, author, author_email, date, category)
+    VALUES (  
+      @slug,
+      @title,
+      @image,
+      @summary,
+      @content,
+      @author,
+      @author_email,
+      @date,
+      @category
+    )`)
+    .run(newArticle);
+}
+>>>>>>> abb5633c3132a5dfe3cd643e023177133c1e2bbc
 
 const api_key = "pub_701076cdd4cdeaa56df41b17fae04f1ce8350";
 
+/**
+ * @deprecated we will use our db to fetch data
+ */
 const fetchNews = async (category: string, country: string) => {
   const res = await fetch(
     `https://newsdata.io/api/1/latest?apikey=${api_key}&category=${category}&country=${country}`,
@@ -33,4 +68,13 @@ const fetchNews = async (category: string, country: string) => {
   );
 };
 
+<<<<<<< HEAD
 export { fetchNews };
+=======
+export {
+  fetchNews,
+  getNewsByCategory,
+  getNewsArticle,
+  insertArticle
+}
+>>>>>>> abb5633c3132a5dfe3cd643e023177133c1e2bbc

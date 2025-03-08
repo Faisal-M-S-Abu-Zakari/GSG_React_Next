@@ -3,35 +3,20 @@
 "use client";
 import React from "react";
 
+<<<<<<< HEAD
 import Categories from "@/components/categories/Categories";
 import Link from "next/link";
+=======
+import Categories from '@/components/categories/Categories';
+// import Link from 'next/link';
+import React from 'react';
+>>>>>>> abb5633c3132a5dfe3cd643e023177133c1e2bbc
 
 const Page = () => {
   return (
     <div>
       <h1>Categories Page</h1>
       <Categories />
-
-      <ul>
-        <li>
-          <Link href="/news-list/sports/us">US Sports</Link>
-        </li>
-        <li>
-          <Link href="/news-list/sports/gb">UK Sports</Link>
-        </li>
-        <li>
-          <Link href="/news-list/politics/us">US Politics</Link>
-        </li>
-        <li>
-          <Link href="/news-list/politics/gb">UK Politics</Link>
-        </li>
-        <li>
-          <Link href="/news-list/business/us">US Business</Link>
-        </li>
-        <li>
-          <Link href="/news-list/business/gb">UK Business</Link>
-        </li>
-      </ul>
     </div>
   );
 };
