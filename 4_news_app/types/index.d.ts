@@ -49,3 +49,23 @@ export interface Item_ {
   date: number;
   category: string;
 }
+
+export interface Item_ {
+  id?: string;
+  title: string;
+  slug: string;
+  image: string;
+  summary: string;
+  content: string;
+  author: string;
+  author_email: string;
+  date: number;
+  category: string;
+}
+
+export interface IUser {
+  email: string;
+  password?: string;
+  role: string;
+  displayName: string;
+}
