@@ -8,53 +8,54 @@ import { redirect } from "next/navigation";
 import slugify from "slugify";
 import xss from "xss";
 
-<<<<<<< HEAD
 const addArticle = async (formData: FormData) => {
   const title = xss(formData.get("title")?.toString() || "");
-=======
-const addArticle = async (prevState: { errors: string[] }, formData: FormData) => {
-  const title = xss(formData.get('title')?.toString() || '');
->>>>>>> 9d2b89f773a68799be758ad18dbdc5e9b46b5af2
 
-  const newArticle: Item_ = {
-    title,
-    image: formData.get("image")?.toString() || "",
-    summary: xss(formData.get("summary")?.toString() || ""),
-    content: xss(formData.get("content")?.toString() || ""),
-    date: new Date(formData.get("date")?.toString() || "").getTime(),
-    author: formData.get("author")?.toString() || "",
-    author_email: formData.get("author_email")?.toString() || "",
-    category: formData.get("category")?.toString() || "global",
-    slug: slugify(title, { lower: true }),
-  };
+  const addArticle = async (
+    prevState: { errors: string[] },
+    formData: FormData
+  ) => {
+    const title = xss(formData.get("title")?.toString() || "");
 
-  const errors: string[] = [];
+    const newArticle: Item_ = {
+      title,
+      image: formData.get("image")?.toString() || "",
+      summary: xss(formData.get("summary")?.toString() || ""),
+      content: xss(formData.get("content")?.toString() || ""),
+      date: new Date(formData.get("date")?.toString() || "").getTime(),
+      author: formData.get("author")?.toString() || "",
+      author_email: formData.get("author_email")?.toString() || "",
+      category: formData.get("category")?.toString() || "global",
+      slug: slugify(title, { lower: true }),
+    };
 
-  if (!newArticle.title.length) {
-    errors.push("The title should not be empty");
-  }
+    const errors: string[] = [];
 
-  if (newArticle.title.length > 300) {
-    errors.push("The title should be less than 300 chars length");
-  }
-
-  if (!ALLOWED_CATEGORIES.includes(newArticle.category)) {
-    errors.push("The category you've provided is not allowed!");
-  }
-
-  if (newArticle.date > Date.now()) {
-    errors.push("The date should not be in the future!");
-  }
-
-  if (errors.length) {
-    return {
-      errors
+    if (!newArticle.title.length) {
+      errors.push("The title should not be empty");
     }
-  }
 
-  await new Promise((resolve) => setTimeout(resolve, 2000));
-  insertArticle(newArticle);
-  redirect(`/news/${newArticle.slug}`);
+    if (newArticle.title.length > 300) {
+      errors.push("The title should be less than 300 chars length");
+    }
+
+    if (!ALLOWED_CATEGORIES.includes(newArticle.category)) {
+      errors.push("The category you've provided is not allowed!");
+    }
+
+    if (newArticle.date > Date.now()) {
+      errors.push("The date should not be in the future!");
+    }
+
+    if (errors.length) {
+      return {
+        errors,
+      };
+    }
+
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+    insertArticle(newArticle);
+    redirect(`/news/${newArticle.slug}`);
+  };
 };
-
 export { addArticle };
